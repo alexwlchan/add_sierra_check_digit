@@ -1,6 +1,6 @@
 use substring::Substring;
 
-fn is_numeric(s: &str) -> bool {
+pub fn is_numeric(s: &str) -> bool {
     s.chars().all(|c| '0' <= c && c <= '9')
 }
 
@@ -62,6 +62,8 @@ pub fn validate(record_number: &str) -> bool {
     // Case #1: The string is nine chars long = record type prefix + record number
     //
     // Remove the record type prefix and validate the remainder.
+    //
+    // TODO: Check for a valid record type prefix?
     if record_number.len() == 9 {
         validate(record_number.substring(1, 10))
     }
