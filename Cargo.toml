@@ -1,9 +1,7 @@
 [package]
-name = "sierra_numbers"
-version = "0.1.0"
+name = "add_sierra_check_digit"
+version = "1.0.0"
 edition = "2018"
 
 [dependencies]
-docopt = "1"
-serde = { version = "1", features = ["derive"] }
 substring = "1.4.0"
