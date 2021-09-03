@@ -1,3 +1,5 @@
+use substring::Substring;
+
 fn is_numeric(s: &str) -> bool {
     s.chars().all(|c| '0' <= c && c <= '9')
 }
@@ -51,13 +53,63 @@ pub fn get_check_digit(record_number: &str) -> String {
   }
 }
 
+/// Returns true if a given string is a valid Sierra record number, false otherwise.
+///
+/// The string can have an optional record type prefix.
+///
+pub fn validate(record_number: &str) -> bool {
+
+    // Case #1: The string is nine chars long = record type prefix + record number
+    //
+    // Remove the record type prefix and validate the remainder.
+    if record_number.len() == 9 {
+        validate(record_number.substring(1, 10))
+    }
+
+    // Case #2: The string is eight chars long = seven digits + check digit
+    //
+    // The string is valid if and only if the string is numeric and the final digit
+    // matches the check digit.
+    else if record_number.len() == 8 {
+
+        let number = record_number.substring(0, 7);
+        let check_digit = record_number.substring(7, 8);
+
+        is_numeric(number) && get_check_digit(number) == check_digit
+    }
+
+    // Case #3: any other string isn't a valid check digit.
+    else {
+        false
+    }
+}
+
 #[cfg(test)]
 mod tests {
-    use crate::sierra::get_check_digit;
+    use crate::sierra::{get_check_digit, validate};
 
     #[test]
-    fn test_get_check_digit_example() {
+    fn test_get_check_digit() {
         // This is an example from the Sierra documentation
         assert_eq!(get_check_digit("1024364"), "1");
+
+        // Test the case where the remainder is an 'x'
+        assert_eq!(get_check_digit("1026579"), "x");
+    }
+
+    #[test]
+    fn test_validate() {
+        assert_eq!(validate("10243641"), true);
+        assert_eq!(validate("10243642"), false);
+
+        // With a record type prefix
+        assert_eq!(validate("b10243641"), true);
+        assert_eq!(validate("b10243642"), false);
+        assert_eq!(validate("i10243641"), true);
+        assert_eq!(validate("i10243642"), false);
+
+        assert_eq!(validate("short"), false);
+        assert_eq!(validate("a too long string"), false);
+        assert_eq!(validate("nonumber"), false);
     }
 }
