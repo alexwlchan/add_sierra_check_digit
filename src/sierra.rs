@@ -1,12 +1,16 @@
-//! Adds the check digit to a Sierra record number.
-//!
-//! This function takes the seven-digit record number and returns the
-//! check digit that goes with this record number.
-//!
+fn is_numeric(s: &str) -> bool {
+    s.chars().all(|c| '0' <= c && c <= '9')
+}
+
+/// Adds the check digit to a Sierra record number.
+///
+/// This function takes the seven-digit record number and returns the
+/// check digit that goes with this record number.
+///
 pub fn get_check_digit(record_number: &str) -> String {
 
   assert!(record_number.len() == 7);
-  assert!(record_number.chars().all(|c| '0' <= c && c <= '9'));
+  assert!(is_numeric(record_number));
 
   // Quoting from the Sierra manual:
   //
