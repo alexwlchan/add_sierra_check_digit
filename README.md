@@ -58,8 +58,8 @@ $ add_sierra_check_digit 1026579
 You'll need Rust installed, then clone the repo and install it as a standard Rust binary:
 
 ```console
-$ git clone git@github.com:alexwlchan/add-sierra-check-digit.git
-$ cd add-sierra-check-digit
+$ git clone git@github.com:alexwlchan/add_sierra_check_digit.git
+$ cd add_sierra_check_digit
 $ cargo install --force --path .
 ```
 
