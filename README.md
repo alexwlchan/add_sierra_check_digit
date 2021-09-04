@@ -15,13 +15,15 @@ I prefer to use the long form, with the record type prefix and check digit.
 If you have the long form, it's easy to get to the short form.
 If you have the short form, getting to the longer form is harder – and some contexts require the long form.
 
-The Sierra documentation explains how to [work out the check digit][check digit]; this is a command-line tool that lets me work it out on an ad hoc basis.
+The Sierra documentation explains how to [work out the check digit][check digit]; this is a command-line tool works it out for me.
 For example:
 
 ```console
 $ add_sierra_check_digit 1234567
 12345672
 ```
+
+Here the check digit is "2".
 
 [Wellcome]: https://github.com/wellcomecollection
 [Sierra]: https://www.iii.com/products/sierra-ils/
