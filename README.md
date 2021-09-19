@@ -60,7 +60,7 @@ You'll need Rust installed, then clone the repo and install it as a standard Rus
 ```console
 $ git clone git@github.com:alexwlchan/add_sierra_check_digit.git
 $ cd add_sierra_check_digit
-$ cargo install --force --path .
+$ cargo install --path .
 ```
 
 ## Other implementations
