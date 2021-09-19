@@ -12,8 +12,8 @@ For example:
 *   `b12345672` is a record with record type prefix and a check digit (here the "b" prefix means this is a bibliographic record)
 
 I prefer to use the long form, with the record type prefix and check digit.
-If you have the long form, it's easy to get to the short form.
-If you have the short form, getting to the longer form is harder – and some contexts require the long form.
+It avoids ambiguity, and it's simpler for library staff to deal with.
+It's easy to go from the long form to the short form, but not vice versa.
 
 The Sierra documentation explains how to [work out the check digit][check digit]; this is a command-line tool works it out for me.
 For example:
